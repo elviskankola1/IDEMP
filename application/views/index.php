@@ -1,20 +1,19 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>cyan Flat ui kit Website Template | Home :: w3layouts</title>
-		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-		<script src="js/jquery.min.js"></script>
-		<link href="css/style.css" rel='stylesheet' type='text/css' />
-   		<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+		<title>HOME</title>
+		<link href="<?php echo base_url('assets/css/bootstrap.css');?>" rel='stylesheet' type='text/css' />
+		<script src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>
+		<link href="<?php echo base_url('assets/css/style.css');?>" rel='stylesheet' type='text/css' />
+   		<link rel="stylesheet" href="<?php echo base_url('assets/fonts/css/font-awesome.min.css');?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		</script>
 	</head>
 	<body>
 		<div class="container">
 			<div class="top-header">
-				<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
-				<script type="text/javascript" src="js/jquery.mmenu.js"></script>
+				<link type="text/css" rel="stylesheet" href="<?php echo base_url('assets/css/jquery.mmenu.all.css');?>" />
+				<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.mmenu.js');?>"></script>
 				<script type="text/javascript">
 					$(function() {
 						$('nav#menu-left').mmenu();
@@ -22,18 +21,18 @@
 				</script>
 				<div id="page">
 					<div id="header">
-						<a href="#menu-left"> </a>
+						<a href="#menu-left">essaie </a>
 					</div>
 					<nav id="menu-left">
 						<ul>
 							<li><a href="#">HOME</a></li>
 							<li class="active"><a href="#">NOUVELLES</a></li>
-							<li><a href="#">About</a></li>
+							<li><a href="<?php echo site_url('user_show/formulaire');?>">creer un agent</a></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="logo">
-					<span>Dashboard </span>
+					<span>Liste agents</span>
 				</div>
 				<div class="usernotifications">
 					<ul class="user-profile list-unstyled">
@@ -56,19 +55,25 @@
 						<li><a href="#"><span> </span></a></li>
 					</ul>
 				</div>
-				<div class="clearfix"> 33</div>
+				<div class="clearfix"></div>
 			</div>
 			<div class="clearfix"> </div>
 			<div class="content">
 				<div class="3-cols">
+					<?php if($employer):?>
+					<?php foreach($employer as $identity):?>
 					<div class="col-1 col-md-3">
 							<div class="user-profile1 text-center">
-								<img src="images/people.png" title="name" />
-								<h3>Zach Dunes</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus dui id libero auctor cursus. </p>
-								<a class="p-btn" href="#">Profile</a>
+								<img src="<?php echo base_url($identity->photoEmp);?>" title="name" width="100%"/>
+								<h3><?php echo $identity->nomEmp;?></h3>
+								<p><?php echo $identity->emailEmp;?> </p>
+								<a class="p-btn" href="<?php echo site_url();?>">Profile</a>
 							</div>
 					</div>
+					<?php endforeach ?>
+					<?php else:?>
+						<h5>Aucun agent</h5>
+					<?php endif?>
 					<div class="clearfix"> </div>
 				</div>
 			</div>
