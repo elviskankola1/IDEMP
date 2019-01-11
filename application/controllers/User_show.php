@@ -10,12 +10,18 @@
         public function index(){
 
             $data['employer'] = $this->user_model->GetAllEmployer();
-            $this->load->view('home',$data);
+            $this->load->view('index',$data);
         }
 
         public function formulaire(){
 
             $this->load->view('creer_un_employer');
+        }
+
+        public function DetailOneEp(){
+            $id = $this->uri->segment(3);
+            $data['detail'] = $this->user_model->GetOneEmployer($id);
+            $this->load->view('');
         }
         public function CreateEmployer(){
 
