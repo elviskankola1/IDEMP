@@ -21,23 +21,33 @@
             $this->db->set('emailEmp',$email);
             $this->db->set('adressehomeEmp',$adresse);
             $this->db->set('photoEmp',$photo);
+            $this->db->set('datefonctionEmp',date('Y'));
             return $this->db->insert($this->TableEmployer);
         }
-        public function AddoneDossier(){
+        public function AddoneDossier($diplomeetat,$diplomeetatsup,$lettre,$annex1,$annex2,$annex3,$nomemp){
 
-            $this->db->set('diplomeetatDossier','ok');
-            $this->db->set('diplomesupDossier','ok');
-            $this->db->set('lettredemandeDossier','ok');
+            $this->db->set('diplomeetatDossier',$diplomeetat);
+            $this->db->set('diplomesupDossier',$diplomeetatsup);
+            $this->db->set('lettredemandeDossier',$lettre);
+            $this->db->set('annex1',$annex1);
+            $this->db->set('annex2',$annex2);
+            $this->db->set('annex3',$annex3);
+            $this->db->set('nomEmpDossier',$nomemp);
             return $this->db->insert($this->TableDossier);
         }
 
         public function GetAllEmployer(){
             
-            return $this->db->select(['nomEmp','postnomEmp','prenomEmp','photoEmp','emailEmp'])->limit(100,0)->order_by('idEmp','desc')->get($this->TableEmployer)->result();
+            return $this->db->select(['idEmp','nomEmp','postnomEmp','prenomEmp','photoEmp','emailEmp'])->limit(100,0)->order_by('idEmp','desc')->get($this->TableEmployer)->result();
         }
 
         public function GetOneEmployer($id){
             return $this->db->select()->where('idEmp',$id)->get($this->TableEmployer)->result();
+        }
+
+        public function LogInEmployer($name,$matricule){
+
+            return $this->db->where(['nomEmp'=>$name,'emailEmp'=>$matricule])->get($this->TableEmployer)->result();
         }
 
 
