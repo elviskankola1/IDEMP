@@ -11,7 +11,7 @@
             parent::__construct();
         }
 
-        public function AddOneEmployer($nom,$postnom,$prenom,$datens,$genre,$email,$adresse,$photo){
+        public function AddOneEmployer($nom,$postnom,$prenom,$datens,$genre,$email,$adresse,$photo,$mat){
 
             $this->db->set('nomEmp',$nom);
             $this->db->set('postnomEmp',$postnom);
@@ -22,6 +22,7 @@
             $this->db->set('adressehomeEmp',$adresse);
             $this->db->set('photoEmp',$photo);
             $this->db->set('datefonctionEmp',date('Y'));
+            $this->db->set('matriculeEmp',$mat);
             return $this->db->insert($this->TableEmployer);
         }
         public function AddoneDossier($diplomeetat,$diplomeetatsup,$lettre,$annex1,$annex2,$annex3,$nomemp){
@@ -48,6 +49,11 @@
         public function LogInEmployer($name,$matricule){
 
             return $this->db->where(['nomEmp'=>$name,'emailEmp'=>$matricule])->get($this->TableEmployer)->result();
+        }
+
+        public function CountAllEmployer(){
+
+            return $this->db->count_all_results($this->TableEmployer);
         }
 
 
