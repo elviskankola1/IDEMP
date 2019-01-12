@@ -20,8 +20,13 @@
 
         public function DetailOneEp(){
             $id = $this->uri->segment(3);
+            $date = $this->user_model->GetOneEmployer($id);
+            foreach($date as $stat){
+               $final_stat =  $stat->datefonctionEmp - $stat->datenaissanceEmp; 
+            }
             $data['detail'] = $this->user_model->GetOneEmployer($id);
-            $this->load->view('');
+            $data['stat'] = $final_stat;
+            $this->load->view('detail_employer',$data);
         }
         public function CreateEmployer(){
 
@@ -68,5 +73,35 @@
             }
             
         }
+
+        public function LogEmployer(){
+           
+            $this->form_validation->set_rules('nom', 'nom', 'trim|required|min_length[5]|max_length[12]');
+            $this->form_validation->set_rules('email', 'email', 'trim|required|min_length[5]|max_length[50]|email_valid');
+            if($this->form_validation->run()){
+                $login = strip_tags($this->input->post('nom'));
+                $pass = strip_tags($this->input->post('email'));
+                $data = $this->user_model->LogInEmployer($login,$pass);
+                if(count($data)>0){
+                    $user = $data[0];
+
+                    $user_data = ['nom'=>$user->nomEmp,
+                                  'email'=>$user->emailEmp,
+                                  'etat'=>true
+                    ];
+                    $this->session->userdata($user_data);
+                    redirect('');
+                    
+                }else{
+                    $data['error'] = "erreur! entrez de bonnes donnees";
+                    $this->session->flashdata($data);
+                    //view
+                }
+            }else{
+                //view
+            }
+        }
+
+        
 
     }
