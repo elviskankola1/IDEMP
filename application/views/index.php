@@ -21,7 +21,7 @@
 				</script>
 				<div id="page">
 					<div id="header">
-						<a href="#menu-left">essaie </a>
+						<a href="#menu-left"><img src="<?php echo base_url('assets/img/drop.png');?>" title="notifications" /></a>
 					</div>
 					<nav id="menu-left">
 						<ul>
@@ -35,20 +35,8 @@
 					<span>Liste agents</span>
 				</div>
 				<div class="usernotifications">
-					<ul class="user-profile list-unstyled">
-						<li><a href="#"><img src="images/user-pic.jpg" title="admin" /></a>
-							<ul class="sub list-unstyled">
-								<li><a href="#">Profile</a></li>
-								<li><a href="#">Settings</a></li>
-								<li><a href="#">custom</a></li>
-							</ul>
-						</li>
-					</ul>
 					<ul class="notification list-unstyled user-profile">
-						<li><a href="#"><img src="images/notification-icon.png" title="notifications" /></a>
-							<ul class="sub list-unstyled">
-								<li><a href="#">20</a></li>
-							</ul>
+						<li><a href="#"><img src="<?php echo base_url('assets/img/notification-icon.png');?>" title="notifications" /><?php echo $totalemployer;?></a>
 						</li>
 					</ul>
 					<ul class="logout list-unstyled">
@@ -68,7 +56,7 @@
 								<h3><?php echo $identity->nomEmp;?></h3>
 								<p><?php echo $identity->emailEmp;?> </p>
 								<a class="p-btn" href="<?php echo site_url('user_show/DetailOneEp').'/'.$identity->idEmp;?>">Profile</a>
-							</div>
+							</div><br>
 					</div>
 					<?php endforeach ?>
 					<?php else:?>
