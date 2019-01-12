@@ -72,6 +72,7 @@
                         <h3><b style="color:rgb(200,40,20);">date de naissance: </b><b><?php echo $identity->datenaissanceEmp;?></b></h3>
                         <h3><b style="color:rgb(200,40,20);">Age: </b><b><?php echo $stat;?> ans</h3>
                         <h3><b style="color:rgb(200,40,20);">genre: </b><b><?php echo $identity->genreEmp;?></h3>
+                        <h3><b style="color:rgb(200,40,20);">matricule: </b><b><?php echo $identity->matriculeEmp;?></h3>
                         <h3><b style="color:rgb(200,40,20);">adresse email: </b><b><a href="<?php echo $identity->emailEmp;?>"><?php echo $identity->emailEmp;?></a></h3>
                         <h3><b style="color:rgb(200,40,20);">adresse a domicile: </b><b><?php echo $identity->adressehomeEmp;?></h3>
                         <?php if($stat > 50):?>
@@ -84,13 +85,7 @@
                     </div>
                     <div class="col-1 col-md-3">
 							<div class="user-profile1 text-center">
-								<img src="<?php echo base_url($identity->photoEmp);?>" title="name" width="100%"/>
-							</div>
-                            <div class="user-profile1 text-center">
-								<img src="<?php echo base_url($identity->photoEmp);?>" title="name" width="100%"/>
-							</div>
-                            <div class="user-profile1 text-center">
-								<img src="<?php echo base_url($identity->photoEmp);?>" title="name" width="100%"/>
+								<img src="<?php echo base_url('assets/img/ow.jpg');?>" title="name" width="100%"/>
 							</div>
 					    </div>
                         
