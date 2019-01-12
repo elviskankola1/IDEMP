@@ -10,6 +10,7 @@
         public function index(){
 
             $data['employer'] = $this->user_model->GetAllEmployer();
+            $data['totalemployer'] = $this->user_model->CountAllEmployer();
             $this->load->view('index',$data);
         }
 
@@ -41,9 +42,9 @@
 
                 $config['upload_path']          = './assets/uploads/';
                 $config['allowed_types']        = 'JPG|jpg|png|PNG';
-                $config['max_size']             = 100;
+                $config['max_size']             = 2048;
                 $config['max_width']            = 2048;
-                $config['max_height']           = 768;
+                $config['max_height']           = 2048;
                 $this->load->library('upload', $config);
                 $nom =strip_tags( $this->input->post('nom'));
                 $postnom = strip_tags($this->input->post('postnom'));
@@ -61,10 +62,13 @@
 					foreach ($chemin as $key => $value) {
 						if ($key==='file_name') {
 							$file = './assets/uploads/'.$value;
-						}
+                        }
                     }
-                    $this->user_model->AddOneEmployer($nom,$postnom,$prenom,$naissance,$genre,$email,$adresse,$file);
-                    echo "bien enregistrer";
+
+                    $number = $this->user_model->CountAllEmployer()+1;
+                    $matricule = $number.$nom.$prenom[0];
+                    $this->user_model->AddOneEmployer($nom,$postnom,$prenom,$naissance,$genre,$email,$adresse,$file,$matricule);
+                    redirect();
                 }
 
             }else{
@@ -102,6 +106,6 @@
             }
         }
 
-        
+
 
     }
