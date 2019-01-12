@@ -25,7 +25,7 @@
 					</div>
 					<nav id="menu-left">
 						<ul>
-							<li><a href="#">HOME</a></li>
+							<li><a href="<?php echo site_url();?>">HOME</a></li>
 							<li class="active"><a href="#">NOUVELLES</a></li>
 							<li><a href="<?php echo site_url('user_show/formulaire');?>">creer un agent</a></li>
 						</ul>
@@ -67,7 +67,7 @@
 								<img src="<?php echo base_url($identity->photoEmp);?>" title="name" width="100%"/>
 								<h3><?php echo $identity->nomEmp;?></h3>
 								<p><?php echo $identity->emailEmp;?> </p>
-								<a class="p-btn" href="<?php echo site_url();?>">Profile</a>
+								<a class="p-btn" href="<?php echo site_url('user_show/DetailOneEp').'/'.$identity->idEmp;?>">Profile</a>
 							</div>
 					</div>
 					<?php endforeach ?>
