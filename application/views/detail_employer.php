@@ -36,13 +36,7 @@
 				</div>
 				<div class="usernotifications">
 					<ul class="user-profile list-unstyled">
-						<li><a href="#"><img src="" title="admin" /></a>
-							<ul class="sub list-unstyled">
-								<li><a href="#">Profile</a></li>
-								<li><a href="#">Settings</a></li>
-								<li><a href="#">custom</a></li>
-							</ul>
-						</li>
+						
 					</ul>
 					<ul class="notification list-unstyled user-profile">
 						<li><a href="#"><img src="" title="notifications" width="10%"/></a>
@@ -64,7 +58,7 @@
 					<?php foreach($detail as $identity):?>
 					<div class="col-1 col-md-4">
 							<div class="user-profile1 text-center">
-								<img src="<?php echo base_url($identity->photoEmp);?>" title="name" width="100%"/>
+								<img src="<?php echo base_url($identity->photoEmp);?>" title="<?php echo $identity->nomEmp;?>" width="100%"/>
 							</div>
 					</div>
                     <div class="col-1 col-md-5">
