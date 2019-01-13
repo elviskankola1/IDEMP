@@ -22,17 +22,19 @@
 				<div id="page">
 					<div id="header">
 						<a href="#menu-left"><img src="<?php echo base_url('assets/img/drop.png');?>" title="notifications" /></a>
+
 					</div>
 					<nav id="menu-left">
 						<ul>
+						<li><a href="#"><img src="<?php echo base_url('assets/img/ow.jpg');?>" title="notifications" width="20%"/> <b>OUR-REPERTOIRE</b></a>
 							<li><a href="<?php echo site_url();?>">HOME</a></li>
-							<li class="active"><a href="#">NOUVELLES</a></li>
+							<li class="active"><a href="<?php echo site_url('user_show/PresenceEmp');?>">Presence</a></li>
 							<li><a href="<?php echo site_url('user_show/formulaire');?>">creer un agent</a></li>
 						</ul>
 					</nav>
 				</div>
 				<div class="logo">
-					<span>Liste agents</span>
+					<span>AGENTS</span>
 				</div>
 				<div class="usernotifications">
 					<ul class="notification list-unstyled user-profile">
@@ -45,6 +47,17 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
+			
+			<div class="sign-in-box">
+				<form>
+					<div class="text-boxs">
+						<span class="text-box">
+							<input type="text" placeholder="Recherche" required /> 
+							<div class="clearfix"> </div>
+						</span>
+					</div>
+				</form>
+			</div>
 			<div class="clearfix"> </div>
 			<div class="content">
 				<div class="3-cols">
@@ -52,7 +65,7 @@
 					<?php foreach($employer as $identity):?>
 					<div class="col-1 col-md-3">
 							<div class="user-profile1 text-center">
-								<img src="<?php echo base_url($identity->photoEmp);?>" title="name" width="100%"/>
+								<img src="<?php echo base_url($identity->photoEmp);?>" title="<?php echo $identity->nomEmp;?>  <?php echo $identity->postnomEmp;?>" width="100%"/>
 								<h3><?php echo $identity->nomEmp;?></h3>
 								<p><?php echo $identity->emailEmp;?> </p>
 								<a class="p-btn" href="<?php echo site_url('user_show/DetailOneEp').'/'.$identity->idEmp;?>">Profile</a>
