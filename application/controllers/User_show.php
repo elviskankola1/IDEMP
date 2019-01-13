@@ -19,6 +19,11 @@
             $this->load->view('creer_un_employer');
         }
 
+        public function PresenceEmp(){
+
+            $this->load->view('presence_employer');
+        }
+//=========================================================================================================
         public function DetailOneEp(){
             $id = $this->uri->segment(3);
             $date = $this->user_model->GetOneEmployer($id);
@@ -29,6 +34,7 @@
             $data['stat'] = $final_stat;
             $this->load->view('detail_employer',$data);
         }
+//=========================================================================================================
         public function CreateEmployer(){
 
             $this->form_validation->set_rules('nom', 'votre nom', 'trim|required|min_length[5]|max_length[50]');
@@ -40,11 +46,11 @@
             $this->form_validation->set_rules('email', 'votre e-mail', 'trim|required|min_length[12]|max_length[255]|valid_email');
             if($this->form_validation->run()){
 
-                $config['upload_path']          = './assets/uploads/';
-                $config['allowed_types']        = 'JPG|jpg|png|PNG';
-                $config['max_size']             = 2048;
-                $config['max_width']            = 2048;
-                $config['max_height']           = 2048;
+                $config['upload_path'] = './assets/uploads/';
+                $config['allowed_types'] = 'JPG|jpg|png|PNG';
+                $config['max_size'] = 2048;
+                $config['max_width'] = 2048;
+                $config['max_height'] = 1028;
                 $this->load->library('upload', $config);
                 $nom =strip_tags( $this->input->post('nom'));
                 $postnom = strip_tags($this->input->post('postnom'));
@@ -77,7 +83,7 @@
             }
             
         }
-
+//=========================================================================================================
         public function LogEmployer(){
            
             $this->form_validation->set_rules('nom', 'nom', 'trim|required|min_length[5]|max_length[12]');
@@ -94,7 +100,7 @@
                                   'etat'=>true
                     ];
                     $this->session->userdata($user_data);
-                    redirect('');
+                    redirect('user_show/index');
                     
                 }else{
                     $data['error'] = "erreur! entrez de bonnes donnees";
