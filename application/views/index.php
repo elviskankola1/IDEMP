@@ -27,9 +27,10 @@
 					<nav id="menu-left">
 						<ul>
 						<li><a href="#"><img src="<?php echo base_url('assets/img/ow.jpg');?>" title="notifications" width="20%"/> <b>OUR-REPERTOIRE</b></a>
-							<li><a href="<?php echo site_url();?>">HOME</a></li>
+							<li><a href="<?php echo site_url();?>">TOUS LES AGENTS</a></li>
 							<li class="active"><a href="<?php echo site_url('user_show/PresenceEmp');?>">Presence</a></li>
 							<li><a href="<?php echo site_url('user_show/formulaire');?>">creer un agent</a></li>
+							<li><a href="<?php echo site_url('user_show/formulaire');?>">Liste noir</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -38,7 +39,7 @@
 				</div>
 				<div class="usernotifications">
 					<ul class="notification list-unstyled user-profile">
-						<li><a href="#"><img src="<?php echo base_url('assets/img/notification-icon.png');?>" title="notifications" /><?php echo $totalemployer;?></a>
+						<li><a href="#"><img src="<?php echo base_url('assets/img/notification-icon.png');?>" title="notifications" /><b><?php echo $totalemployer;?></b></a>
 						</li>
 					</ul>
 					<ul class="logout list-unstyled">
@@ -49,10 +50,10 @@
 			</div>
 			
 			<div class="sign-in-box">
-				<form>
+				<form method='POST' action = '<?php echo site_url('user_show/Search');?>'>
 					<div class="text-boxs">
 						<span class="text-box">
-							<input type="text" placeholder="Recherche" required /> 
+							<input type="text" placeholder="Recherche" required name='mot'value="<?php echo set_value('mot');?>" /> 
 							<div class="clearfix"> </div>
 						</span>
 					</div>
@@ -73,7 +74,7 @@
 					</div>
 					<?php endforeach ?>
 					<?php else:?>
-						<h5>Aucun agent</h5>
+						<b><h1 style="text-align:center;">Aucun Resultat</h1></b>
 					<?php endif?>
 					<div class="clearfix"> </div>
 				</div>
