@@ -23,6 +23,11 @@
 
             $this->load->view('presence_employer');
         }
+
+        public function ListBack(){
+            
+            $this->load->view('presence_employer');
+        }
 //=========================================================================================================
         public function DetailOneEp(){
             $id = $this->uri->segment(3);
@@ -83,6 +88,14 @@
             }
             
         }
+
+//=========================================================================================================
+        public function Search(){
+            $mot = strip_tags($this->input->post('mot'));
+            $data['employer']= $this->user_model->SearchEmployer($mot);
+            $data['totalemployer'] = $this->user_model->CountAllEmployer();
+            $this->load->view('index',$data);
+        }
 //=========================================================================================================
         public function LogEmployer(){
            
@@ -111,6 +124,7 @@
                 //view
             }
         }
+
 
 
 
