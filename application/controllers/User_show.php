@@ -25,8 +25,9 @@
         }
 
         public function ListBack(){
-            
-            $this->load->view('presence_employer');
+            $data['black'] = $this->user_model->GetAllBlackList();
+            $data['totalemployer'] = $this->user_model->CountAllEmployer();
+            $this->load->view('liste_noir',$data);
         }
 //=========================================================================================================
         public function DetailOneEp(){
@@ -95,6 +96,34 @@
             $data['employer']= $this->user_model->SearchEmployer($mot);
             $data['totalemployer'] = $this->user_model->CountAllEmployer();
             $this->load->view('index',$data);
+        }
+
+//=========================================================================================================
+        public function AddListBack(){
+
+            $nom = $this->input->post('nom');
+            $email = $this->input->post('email');
+            $file = $this->input->post('file');
+            $identity_compare = $this->user_model->IfExistBlack($nom,$email,$file);
+            if(count($identity_compare)>0){
+                $error['error'] = "cet agent est deja dans la liste noire";
+                $this->session->flashdata($error);
+                redirect($_SERVER['HTTP_REFERER']);
+            }else{
+
+                $this->user_model->AddOneBlackList($nom,$email,$file);
+                $data['black'] = $this->user_model->GetAllBlackList();
+                $data['totalemployer'] = $this->user_model->CountAllEmployer();
+                $this->load->view('liste_noir',$data);
+            }
+           
+        }
+
+//========================================================================================================
+        public function DeleteListBack(){
+            $id = $this->uri->segment(3);
+            $this->user_model->DeleteOneInBlackList($id);
+            redirect('user_show/ListBack');
         }
 //=========================================================================================================
         public function LogEmployer(){
