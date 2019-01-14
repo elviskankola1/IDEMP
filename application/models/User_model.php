@@ -5,6 +5,7 @@
 
         private $TableEmployer = 'employers' ;
         private $TableDossier = 'dossier';
+        private $TableListeNoir = 'noirs';
 
         function __construct(){
             
@@ -25,7 +26,7 @@
             $this->db->set('matriculeEmp',$mat);
             return $this->db->insert($this->TableEmployer);
         }
-        public function AddoneDossier($diplomeetat,$diplomeetatsup,$lettre,$annex1,$annex2,$annex3,$nomemp){
+        public function AddOneDossier($diplomeetat,$diplomeetatsup,$lettre,$annex1,$annex2,$annex3,$nomemp){
 
             $this->db->set('diplomeetatDossier',$diplomeetat);
             $this->db->set('diplomesupDossier',$diplomeetatsup);
@@ -37,6 +38,13 @@
             return $this->db->insert($this->TableDossier);
         }
 
+        public function AddOneBlackList($name,$email,$file){
+            $this->db->set('nomNoir',$name);
+            $this->db->set('emailNoir',$email);
+            $this->db->set('photoNoir',$file);
+            return $this->db->insert($this->TableListeNoir);
+        }
+
         public function GetAllEmployer(){
             
             return $this->db->select(['idEmp','nomEmp','postnomEmp','prenomEmp','photoEmp','emailEmp'])->limit(100,0)->order_by('idEmp','desc')->get($this->TableEmployer)->result();
@@ -44,6 +52,10 @@
 
         public function GetOneEmployer($id){
             return $this->db->select()->where('idEmp',$id)->get($this->TableEmployer)->result();
+        }
+
+        public function GetAllBlackList(){
+            return $this->db->select()->limit(10,0)->order_by('idNoir','desc')->get($this->TableListeNoir)->result();
         }
 
         public function LogInEmployer($name,$matricule){
@@ -60,6 +72,15 @@
             return $this->db->select()->like('nomEmp',$string)->get($this->TableEmployer)->result();
         }
 
+        public function DeleteOneInBlackList($id){
+
+            return $this->db->where('idNoir',$id)->delete($this->TableListeNoir);
+        }
+
+        public function IfExistBlack($name,$email,$file){
+
+            return $this->db->where(['nomNoir'=>$name,'emailNoir'=>$email,'photoNoir'=>$file])->get($this->TableListeNoir)->result();
+        }
         
 
     }
