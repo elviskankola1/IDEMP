@@ -73,14 +73,21 @@
 
                         <h3><div class="p-btn" style="background:rgb(200,20,70)">bientot pensionne</div><h3>
                         <?php else:?>
-                        <h3><div class="p-btn" style="background:rgb(20,200,70)">Actif & serviable</div></h3>
+                        <h3><div class="p-btn" style="background:rgb(20,200,70)">Valide</div></h3>
                         <?php endif?>
                        
                     </div>
                     <div class="col-1 col-md-3">
 							<div class="user-profile1 text-center">
-								<img src="<?php echo base_url('assets/img/ow.jpg');?>" title="name" width="100%"/>
+							<form method="POST" action="<?php echo site_url('user_show/AddListBack');?>">
+								<input type="hidden" name="nom" value="<?php echo $identity->nomEmp;?>">
+								<input type="hidden" name="email" value="<?php echo $identity->emailEmp;?>">
+								<input type="hidden" name="file" value="<?php echo $identity->photoEmp;?>">
+								<input type ="submit" class="p-btn" style="background:rgb(0,0,70)" value="Liste noire">
+							</form>
+							<h4><?php echo $this->session->error;?></h4>
 							</div>
+							
 					    </div>
                         
 					<?php endforeach ?>

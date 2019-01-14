@@ -30,7 +30,8 @@
 							<li><a href="<?php echo site_url();?>">TOUS LES AGENTS</a></li>
 							<li class="active"><a href="<?php echo site_url('user_show/PresenceEmp');?>">Presence</a></li>
 							<li><a href="<?php echo site_url('user_show/formulaire');?>">creer un agent</a></li>
-							<li><a href="<?php echo site_url('user_show/formulaire');?>">Liste noir</a></li>
+							<li><a href="<?php echo site_url('user_show/ListBack');?>">Liste noir</a></li>
+							<li><a href="<?php echo site_url('Employers/excel');?>">Impoter liste agent en excel</a></li>
 						</ul>
 					</nav>
 				</div>
