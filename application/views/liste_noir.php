@@ -35,7 +35,7 @@
 					</nav>
 				</div>
 				<div class="logo">
-					<span>AGENTS</span>
+					<span>LISTE NOIRE</span>
 				</div>
 				<div class="usernotifications">
 					<ul class="notification list-unstyled user-profile">
