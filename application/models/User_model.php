@@ -67,6 +67,10 @@
 
             return $this->db->count_all_results($this->TableEmployer);
         }
+        public function CountAllBlack(){
+
+            return $this->db->count_all_results($this->TableListeNoir);
+        }
 
         public function SearchEmployer($string){
             return $this->db->select()->like('nomEmp',$string)->get($this->TableEmployer)->result();
