@@ -17,10 +17,6 @@
 
         }
 
-        protected function ClearImage($id_image){
-
-        }
-
         protected function DeleteImageInMemory($image){
             $destroy = imagedestroy($image);
             return $destroy;
@@ -41,4 +37,11 @@
             header('Content-Type: image/png');
             imagepng($image);
         }
+
+        public function ResolutionImage($image){
+            
+            $resolution = imageresolution($image,100,100);
+            return $resolution;
+        }
+
     }
