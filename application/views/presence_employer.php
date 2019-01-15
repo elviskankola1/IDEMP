@@ -66,8 +66,6 @@
 							</div>
 					</div>
                     <div class="col-1 col-md-5">
-                        
-                       
                     </div>
                     <div class="col-1 col-md-3">
 							<div class="user-profile1 text-center">
