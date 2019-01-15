@@ -21,18 +21,20 @@
 				</script>
 				<div id="page">
 					<div id="header">
-						<a href="#menu-left"><img src="<?php echo base_url('assets/img/drop.png');?>" title="notifications" /></a>
+						<a href="#menu-left"><img src="<?php echo base_url('assets/img/drop.png');?>" title="Cliquez" /></a>
 
 					</div>
 					<nav id="menu-left">
 						<ul>
-						<li><a href="#"><img src="<?php echo base_url('assets/img/ow.jpg');?>" title="notifications" width="20%"/> <b>OUR-REPERTOIRE</b></a>
+						<li><a href="#"><img src="<?php echo base_url('assets/img/ow.jpg');?>" title="Cliquez" width="20%"/> <b>OUR-REPERTOIRE</b></a>
 							<li><a href="<?php echo site_url();?>">TOUS LES AGENTS</a></li>
 							<li class="active"><a href="<?php echo site_url('user_show/PresenceEmp');?>">Presence</a></li>
 							<li><a href="<?php echo site_url('user_show/formulaire');?>">creer un agent</a></li>
-							<li><a href="<?php echo site_url('user_show/ListBack');?>">Liste noir</a></li>
+							<li><a href="<?php echo site_url('user_show/ListBack');?>">Liste noire</a></li>
 							<li><a href="<?php echo site_url('Employers/excel');?>">Impoter liste agent en excel</a></li>
+							<li><a href="<?php echo site_url('Employers/excel');?>">Parametres</a></li>
 						</ul>
+						
 					</nav>
 				</div>
 				<div class="logo">
@@ -40,7 +42,7 @@
 				</div>
 				<div class="usernotifications">
 					<ul class="notification list-unstyled user-profile">
-						<li><a href="#"><img src="<?php echo base_url('assets/img/notification-icon.png');?>" title="notifications" /><b><?php echo $totalemployer;?></b></a>
+						<li><a href="#"><img src="<?php echo base_url('assets/img/notification-icon.png');?>" title="Tatal contact" /><b><?php echo $totalemployer;?></b></a>
 						</li>
 					</ul>
 					<ul class="logout list-unstyled">
@@ -59,6 +61,7 @@
 						</span>
 					</div>
 				</form>
+				
 			</div>
 			<div class="clearfix"> </div>
 			<div class="content">
