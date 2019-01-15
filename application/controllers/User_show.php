@@ -26,7 +26,7 @@
 
         public function ListBack(){
             $data['black'] = $this->user_model->GetAllBlackList();
-            $data['totalemployer'] = $this->user_model->CountAllEmployer();
+            $data['totalemployer'] = $this->user_model->CountAllBlack();
             $this->load->view('liste_noir',$data);
         }
 //=========================================================================================================
@@ -113,7 +113,7 @@
 
                 $this->user_model->AddOneBlackList($nom,$email,$file);
                 $data['black'] = $this->user_model->GetAllBlackList();
-                $data['totalemployer'] = $this->user_model->CountAllEmployer();
+                $data['totalemployer'] = $this->user_model->CountAllBlack();
                 $this->load->view('liste_noir',$data);
             }
            
