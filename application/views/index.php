@@ -26,13 +26,13 @@
 					</div>
 					<nav id="menu-left">
 						<ul>
-						<li><a href="#"><img src="<?php echo base_url('assets/img/ow.jpg');?>" title="Cliquez" width="20%"/> <b>OUR-REPERTOIRE</b></a>
+						<li><a href="#"><img src="<?php echo base_url('assets/img/ow.jpg');?>" title="Cliquez" width="20%"/> <b><?php echo strtoupper(shell_exec('users'));?></b></a>
 							<li><a href="<?php echo site_url();?>">TOUS LES AGENTS</a></li>
 							<li class="active"><a href="<?php echo site_url('user_show/PresenceEmp');?>">Presence</a></li>
 							<li><a href="<?php echo site_url('user_show/formulaire');?>">creer un agent</a></li>
 							<li><a href="<?php echo site_url('user_show/ListBack');?>">Liste noire</a></li>
 							<li><a href="<?php echo site_url('Employers/excel');?>">Impoter liste agent en excel</a></li>
-							<li><a href="<?php echo site_url('Employers/excel');?>">Parametres</a></li>
+							<li><a href="<?php echo site_url('Employers/excel');?>">Parametres(Coming soon)</a></li>
 						</ul>
 						
 					</nav>
