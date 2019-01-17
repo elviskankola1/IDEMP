@@ -62,14 +62,17 @@
 				<div class="3-cols">
 					<div class="col-1 col-md-4">
 							<div class="user-profile1 text-center">
-								<img src="<?php echo base_url('assets/img/ow.jpg');?>" title="name" width="100%"/>
+								<?php echo form_open_multipart('user_show/TryDetect')?>
+									<input type="file" name="userfile">
+									<input type="submit" value ="SEND">
+								<?php echo form_close();?>
 							</div>
 					</div>
                     <div class="col-1 col-md-5">
                     </div>
                     <div class="col-1 col-md-3">
 							<div class="user-profile1 text-center">
-								<img src="<?php echo base_url('assets/img/ow.jpg');?>" title="name" width="100%"/>
+								<img src="<?php echo base_url($file);?>" title="name" width="100%"/>
 							</div>
 					    </div>
 					<div class="clearfix"> </div>
