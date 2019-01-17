@@ -16,7 +16,8 @@
 
         public function formulaire(){
 
-            $this->load->view('creer_un_employer');
+            $data['totalemployer'] = $this->user_model->CountAllEmployer();
+            $this->load->view('creer_un_employer',$data);
         }
 
         public function PresenceEmp(){
@@ -66,7 +67,8 @@
                 $adresse = strip_tags($this->input->post('adressehome'));
                 $email = strip_tags($this->input->post('email'));
                 if ( ! $this->upload->do_upload()){
-					$data['error'] = $this->upload->display_errors();
+                    $data['error'] = $this->upload->display_errors();
+                    $data['totalemployer'] = $this->user_model->CountAllEmployer();
 					$this->load->view('creer_un_employer',$data);
 					
 				}else{
@@ -84,8 +86,8 @@
                 }
 
             }else{
-
-                $this->load->view('creer_un_employer');
+                $data['totalemployer'] = $this->user_model->CountAllEmployer();
+                $this->load->view('creer_un_employer',$data);
             }
             
         }
@@ -118,7 +120,38 @@
             }
            
         }
+//========================================================================================================
+        public function TryDetect(){
 
+            $config['upload_path'] = './assets/uploads/';
+                $config['allowed_types'] = 'JPG|jpg|png|PNG';
+                $config['max_size'] = 2048;
+                $config['max_width'] = 2048;
+                $config['max_height'] = 1028;
+                $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload()){
+                $data['error'] = $this->upload->display_errors();
+                $this->load->view('presence_employer',$data);
+                
+            }else{
+                $chemin= $this->upload->data();
+                foreach ($chemin as $key => $value) {
+                    if ($key==='file_name') {
+                        $file = './assets/uploads/'.$value;
+                    }
+                }
+
+                
+                $img = imagecreatefromjpeg($file);
+                $size = getimagesize($file);
+                imagecolortransparent($img,200);
+                imagefilledrectangle($img,$size[0]/2,$size[1]/2,$size[0]+50/2,$size[1]+50/2,4);
+                header('Content-Type: image/png');
+                imagepng($img);
+                $this->load->view('presence_employer',$data);
+            }
+        }
 //========================================================================================================
         public function DeleteListBack(){
             $id = $this->uri->segment(3);
@@ -146,7 +179,7 @@
                     
                 }else{
                     $data['error'] = "erreur! entrez de bonnes donnees";
-                    $this->session->flashdata($data);
+                    $this->session->set_flashdata($data);
                     //view
                 }
             }else{
