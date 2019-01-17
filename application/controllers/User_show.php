@@ -145,8 +145,12 @@
                 
                 $img = imagecreatefromjpeg($file);
                 $size = getimagesize($file);
+                $x1 = $size[0];
+                $y1 = $size[1];
+                $x2 = $size[0];
+                $y2 = $size[1];
                 imagecolortransparent($img,200);
-                imagefilledrectangle($img,$size[0]/2,$size[1]/2,$size[0]+50/2,$size[1]+50/2,4);
+                imagefilledrectangle($img,$x1,$y1,$x2,$y2,4);
                 header('Content-Type: image/png');
                 imagepng($img);
                 $this->load->view('presence_employer',$data);
