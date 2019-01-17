@@ -48,17 +48,7 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			
-			<div class="sign-in-box">
-				<form method='POST' action = '<?php echo site_url('user_show/Search');?>'>
-					<div class="text-boxs">
-						<span class="text-box">
-							<input type="text" placeholder="Recherche" required name='mot'value="<?php echo set_value('mot');?>" /> 
-							<div class="clearfix"> </div>
-						</span>
-					</div>
-				</form>
-			</div>
+		
 			<div class="clearfix"> </div>
 			<div class="content">
 				<div class="3-cols">
